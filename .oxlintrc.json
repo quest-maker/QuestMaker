@@ -39,5 +39,5 @@
     "builtin": true
   },
   "globals": {},
-  "ignorePatterns": ["dist/", "node_modules/", ".wrangler/", "worker-configuration.d.ts", "src/routeTree.gen.ts"]
+  "ignorePatterns": ["dist/", "node_modules/", ".wrangler/", "worker-configuration.d.ts", "src/routeTree.gen.ts", ".claude/", ".codex/", ".cursor/", ".devcontainer/", "scripts/", "tools/"]
 }
