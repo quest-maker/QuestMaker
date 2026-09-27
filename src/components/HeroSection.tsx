@@ -4,14 +4,11 @@
  */
 export function HeroSection() {
   return (
-    <section
-      className="w-full bg-cover bg-center"
-      style={{
-        backgroundImage: "url('/images/header.png')",
-        aspectRatio: "3 / 1",
-      }}
-      role="img"
-      aria-label="QuestMaker ヒーロー画像"
+    <img
+      className="w-full object-cover object-center"
+      style={{ aspectRatio: "3 / 1" }}
+      src="/images/header.png"
+      alt="QuestMaker ヒーロー画像"
     />
   );
 }
