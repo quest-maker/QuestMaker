@@ -52,12 +52,5 @@
 		"vite-tsconfig-paths": "^6.1.1",
 		"vitest": "^5.0.2",
 		"wrangler": "^4.141.0"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"workerd",
-			"sharp"
-		]
 	}
 }
