@@ -1,0 +1,9 @@
+# Supply-chain hardening: a freshly published (possibly compromised) version is not
+# resolved until it has been public for 3 days (value in minutes).
+minimumReleaseAge: 4320
+
+# Only these packages may run install scripts; each ships a native binary.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
