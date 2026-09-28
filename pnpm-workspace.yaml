@@ -1,0 +1,3 @@
+# Supply-chain hardening: a freshly published (possibly compromised) version is not
+# resolved until it has been public for 3 days (value in minutes).
+minimumReleaseAge: 4320
