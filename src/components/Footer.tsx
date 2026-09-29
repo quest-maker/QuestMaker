@@ -1,9 +1,11 @@
+import { Link } from "@tanstack/react-router";
 import { SocialButton } from "./SocialButton";
+import { officialLinks } from "~/data/links";
 
 /**
  * サイト共通フッター。
  * 左: ロゴ + チーム説明
- * 右: X / BOOTH ボタン
+ * 右: X / BOOTH / お問い合わせ
  * 下部: コピーライト
  */
 export function Footer() {
@@ -15,12 +17,11 @@ export function Footer() {
             <img src="/images/QuestMaker_Logo_alpha.png" alt="QuestMaker" className="h-16" />
           </div>
           <div className="flex flex-col gap-2.5 items-end">
-            <SocialButton variant="x" label="@QuestMaker_" href="https://x.com/QuestMaker_" />
-            <SocialButton
-              variant="booth"
-              label="BOOTH ショップ"
-              href="https://questmaker.booth.pm/"
-            />
+            <SocialButton variant="x" label={officialLinks.x.handle} href={officialLinks.x.url} />
+            <SocialButton variant="booth" label="BOOTH ショップ" href={officialLinks.booth.url} />
+            <Link to="/contact" className="text-[13px] font-medium text-text-muted link-hover">
+              お問い合わせ
+            </Link>
           </div>
         </div>
         <p className="text-center mt-5 text-[13px] text-text-subtle/50">
