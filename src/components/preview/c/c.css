@@ -1,0 +1,36 @@
+/* 案C（Immersive）専用。和文と英字・等幅ラベルで書体を切り替えるための最小限のクラス */
+.qc-root {
+  background-color: #0b0c10;
+  color: #ffffff;
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+  font-weight: 300;
+}
+
+.qc-en {
+  font-family: "Inter Tight", "Noto Sans JP", system-ui, sans-serif;
+}
+
+.qc-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.qc-root ::selection {
+  background-color: #3cf0ff;
+  color: #0b0c10;
+}
+
+/* ヒーローの作品画像は切り替え時にだけゆっくり寄る。動きに敏感な人には止める */
+@media (prefers-reduced-motion: no-preference) {
+  .qc-kenburns {
+    transform-origin: 100% 100%;
+    transition:
+      opacity 1400ms ease,
+      transform 7000ms linear;
+  }
+  .qc-kenburns[data-active="true"] {
+    transform: scale(1.04);
+  }
+}

@@ -1,0 +1,50 @@
+/* 案D（Editorial）専用。誌面らしさを作る書体の切り替えと、ドロップキャップ・縦組みだけをここに置く */
+.qd-root {
+  background-color: #f1f0ec;
+  color: #1a1819;
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+}
+
+.qd-serif {
+  font-family: "Fraunces", "Shippori Mincho", Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.qd-mincho {
+  font-family: "Shippori Mincho", "Noto Serif JP", serif;
+}
+
+.qd-root ::selection {
+  background-color: #1a1819;
+  color: #f1f0ec;
+}
+
+/* 段落の最初の 1 文字を 3 行ぶん落とし込み、雑誌の本文の書き出しに見せる */
+.qd-dropcap::first-letter {
+  float: left;
+  margin: 0.08em 0.14em 0 0;
+  font-family: "Shippori Mincho", serif;
+  font-size: 4.2em;
+  font-weight: 600;
+  line-height: 0.9;
+  color: #1a1819;
+}
+
+/* 縦組みは PC だけ。モバイルでは行が短くなりすぎて読みにくいため横組みに戻す */
+@media (min-width: 1024px) {
+  .qd-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+/* 便箋の罫線。本文の行送りと揃えて、手紙に書き込んだように見せる */
+.qd-letter {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(2.2em - 1px),
+    rgba(26, 24, 25, 0.14) calc(2.2em - 1px),
+    rgba(26, 24, 25, 0.14) 2.2em
+  );
+}
