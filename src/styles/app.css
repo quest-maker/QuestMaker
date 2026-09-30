@@ -1,12 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap");
 
 @import "tailwindcss";
 
-/**
- * QuestMaker デザイントークン。
- * mockup/style.css のカラーパレットを TailwindCSS v4 の @theme で定義。
- * 各色の用途はデザインスペック (docs/superpowers/specs/2026-03-10-company-website-design.md) を参照。
- */
 /**
  * 日本語の文節区切り改行。
  * word-break: auto-phrase は Chrome 119+ で BudouX ベースの
@@ -19,50 +14,25 @@ html {
   text-wrap: pretty;
 }
 
+/**
+ * QuestMaker デザイントークン。
+ * 白地と墨（ink）の面を主役にし、緑のアクセントは hover・下線・ドットだけに使う。
+ * 英字の見出しは Outfit（font-display）、和文と本文は Noto Sans JP（font-sans）で組む。
+ */
 @theme {
   --font-sans: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-  --color-bg: #f9f8f7;
-  --color-surface: #ffffff;
-  --color-text: #1f1f1f;
-  --color-text-muted: #7a7672;
-  --color-text-subtle: #a8a29e;
-  --color-accent-green: #4fc882;
-  --color-accent-blue: #4daee0;
-  --color-footer-bg: #f5f4f2;
-  --color-border: #eae8e5;
-  --color-cta: #2d2d2d;
-  --color-booth-red: #fc4d50;
-}
+  --font-display: "Outfit", "Noto Sans JP", sans-serif;
 
-/**
- * インタラクション・マイクロアニメーション。
- * カード hover で浮遊感、ボタン hover で沈み込みフィードバック。
- */
-.card-hover {
-  transition:
-    transform 200ms ease-out,
-    box-shadow 200ms ease-out;
-}
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
+  --color-ink: #111111;
+  --color-surface-muted: #f2f2f2;
+  --color-text-muted: #555555;
+  --color-text-soft: #666666;
+  --color-text-subtle: #888888;
+  --color-text-on-ink: #cfcfcf;
+  --color-line: #ededed;
+  --color-line-strong: #dcdcdc;
 
-.link-hover {
-  transition: color 150ms ease-out;
-}
-.link-hover:hover {
-  color: var(--color-text);
-}
-
-.btn-hover {
-  transition:
-    opacity 150ms ease-out,
-    transform 150ms ease-out;
-}
-.btn-hover:hover {
-  opacity: 0.88;
-}
-.btn-hover:active {
-  transform: scale(0.97);
+  --color-accent: #22c55e;
+  --color-accent-strong: #16a34a;
+  --color-accent-soft: #bbf7d0;
 }

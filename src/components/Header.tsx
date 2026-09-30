@@ -1,90 +1,123 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { SocialButton } from "./SocialButton";
+import { Arrow } from "~/components/ui/arrow";
+import { BoothIcon, XIcon } from "~/components/ui/icons";
+import { navItems } from "~/components/nav-items";
 import { officialLinks } from "~/data/links";
 
-const navItems = [
-  { to: "/", label: "Top" },
-  { to: "/works", label: "Works" },
-  { to: "/members", label: "Members" },
-  { to: "/contact", label: "Contact" },
-] as const;
+/** Contact は右端の黒ピルで出すため、横並びのテキストナビからは外す */
+const textNavItems = navItems.filter((item) => item.to !== "/contact");
 
 /**
- * サイト共通ナビバー。
- * 左: ロゴ画像 + テキスト
- * 中央: ナビリンク (Top / Works / Members / Contact)
- * 右: X / BOOTH ボタン
- * モバイル: ハンバーガーメニューでナビ・ソーシャルを折りたたみ
+ * サイト共通ヘッダー。白地に大文字英字のナビを細く並べる。
+ * Contact だけは黒ピルにして、どのページからでも相談の入口が見えるようにする。
  */
 export function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="bg-surface border-b border-border">
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between px-7 py-2">
-        <Link to="/" className="flex items-center -my-3">
-          <img
-            src="/images/QuestMaker_Logo_alpha.png"
-            alt="QuestMaker"
-            className="h-[72px] md:h-[88px]"
-          />
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1320px] items-center justify-between px-5 py-3 md:px-10">
+        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+          <img src="/images/QuestMaker_Logo_alpha.png" alt="" className="h-11 w-auto md:h-12" />
+          <span className="font-display text-[19px] font-extrabold tracking-[-0.01em] text-ink">
+            QuestMaker
+          </span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
-          <nav className="flex gap-6 text-sm text-text-muted">
-            {navItems.map((item) => (
+        <div className="hidden items-center gap-8 md:flex">
+          <nav aria-label="メインナビゲーション" className="flex items-center gap-8">
+            {textNavItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="link-hover"
-                activeProps={{ className: "text-text font-medium" }}
                 activeOptions={{ exact: item.to === "/" }}
+                activeProps={{ className: "underline" }}
+                className="font-display text-[13px] font-semibold uppercase tracking-[0.14em] text-ink underline-offset-[6px] decoration-accent decoration-2 hover:underline"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-
-          <div className="w-px h-4 bg-border" />
-
-          <div className="flex gap-2">
-            <SocialButton variant="x" href={officialLinks.x.url} compact />
-            <SocialButton variant="booth" href={officialLinks.booth.url} compact />
+          <div className="flex items-center gap-1">
+            <a
+              href={officialLinks.x.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="QuestMaker 公式 X"
+              className="grid h-9 w-9 place-items-center rounded-full text-ink hover:bg-surface-muted"
+            >
+              <XIcon size={15} />
+            </a>
+            <a
+              href={officialLinks.booth.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="QuestMaker BOOTH"
+              className="grid h-9 w-9 place-items-center rounded-full text-ink hover:bg-surface-muted"
+            >
+              <BoothIcon size={17} />
+            </a>
           </div>
+          <Link
+            to="/contact"
+            activeProps={{ className: "bg-accent-strong" }}
+            inactiveProps={{ className: "bg-ink" }}
+            className="font-display group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent-strong"
+          >
+            Contact
+            <Arrow size={14} />
+          </Link>
         </div>
 
-        {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-text"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}
+          type="button"
+          className="grid h-10 w-10 place-items-center rounded-full border border-ink text-ink md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-border px-7 py-4 bg-surface">
-          <nav className="flex flex-col gap-3 text-sm text-text-muted mb-4">
+      {open && (
+        <div className="border-t border-line bg-white px-5 pb-8 pt-4 md:hidden">
+          <nav aria-label="メインナビゲーション" className="flex flex-col">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                onClick={() => setMenuOpen(false)}
-                activeProps={{ className: "text-text font-medium" }}
                 activeOptions={{ exact: item.to === "/" }}
+                activeProps={{ className: "text-accent-strong" }}
+                inactiveProps={{ className: "text-ink" }}
+                onClick={() => setOpen(false)}
+                className="font-display border-b border-line py-4 text-[28px] font-extrabold"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="flex gap-2">
-            <SocialButton variant="x" href={officialLinks.x.url} compact />
-            <SocialButton variant="booth" href={officialLinks.booth.url} compact />
+          <div className="mt-6 flex gap-3">
+            <a
+              href={officialLinks.x.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-ink px-4 py-2 text-[13px] font-semibold"
+            >
+              <XIcon size={13} />
+              {officialLinks.x.handle}
+            </a>
+            <a
+              href={officialLinks.booth.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-ink px-4 py-2 text-[13px] font-semibold"
+            >
+              <BoothIcon size={15} />
+              BOOTH
+            </a>
           </div>
         </div>
       )}

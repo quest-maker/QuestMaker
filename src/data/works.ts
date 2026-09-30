@@ -1,5 +1,8 @@
 export type WorkCategory = "live" | "game";
 
+/** カテゴリの表示名。カードのピルに出す */
+export const categoryLabel: Record<WorkCategory, string> = { live: "Live", game: "Game" };
+
 export interface Work {
   id: string;
   title: string;

@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 /**
  * ボタン内の右矢印。hover で右へ少しずれて、押せる方向を示す。
+ * 親要素に group クラスが必要。
  */
 export function Arrow({ size = 16 }: { size?: number }) {
   return (

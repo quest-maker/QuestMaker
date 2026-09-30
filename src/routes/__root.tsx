@@ -1,10 +1,4 @@
-import {
-  Outlet,
-  createRootRoute,
-  HeadContent,
-  Scripts,
-  useRouterState,
-} from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import appCss from "~/styles/app.css?url";
 import { Header } from "~/components/Header";
@@ -52,7 +46,7 @@ export const Route = createRootRoute({
       },
       { name: "twitter:image", content: "/images/header.png" },
       // Theme
-      { name: "theme-color", content: "#f9f8f7" },
+      { name: "theme-color", content: "#ffffff" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -72,26 +66,15 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-  // デザイン比較用の /preview 配下は各案が独自のヘッダー・フッターを持つため、本番の共通レイアウトを被せない
-  const isPreview = useRouterState({
-    select: (s) => s.location.pathname.startsWith("/preview"),
-  });
-
   return (
     <html lang="ja">
       <head>
         <HeadContent />
       </head>
-      <body className="bg-bg text-text font-sans antialiased">
-        {isPreview ? (
-          children
-        ) : (
-          <>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </>
-        )}
+      <body className="bg-white font-sans text-ink antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
         <Scripts />
       </body>
     </html>

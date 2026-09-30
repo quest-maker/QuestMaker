@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "~/components/PageHeader";
+import { Arrow } from "~/components/ui/arrow";
 import { XIcon } from "~/components/ui/icons";
-import { buttonClass } from "~/components/ui/button";
+import { solidPill } from "~/components/ui/pill";
 import { officialLinks } from "~/data/links";
 
 export const Route = createFileRoute("/contact")({
@@ -26,60 +26,79 @@ const dmChecklist = [
 ];
 
 /**
- * お問い合わせページ。窓口は公式 X の DM に一本化している。
- * フォームやメールアドレスを用意するまでの間、迷わず DM へ辿り着けることを優先する。
+ * お問い合わせページ。窓口は公式 X の DM に一本化しているので、大見出しの直下に 1 枚のカードを置き、
+ * 読む順に「どこへ」「何を添えて」「どう送るか」が並ぶようにする。
  */
 function ContactPage() {
   return (
-    <>
-      <PageHeader
-        label="CONTACT"
-        labelColor="green"
-        title="お問い合わせ"
-        subtitle="お仕事のご依頼・ご相談は、公式XアカウントのDMで受け付けています"
-      />
+    <section className="relative overflow-hidden pb-24 pt-12 md:pb-36 md:pt-20">
+      <div className="mx-auto max-w-[1320px] px-5 md:px-10">
+        <p className="font-display flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.2em]">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+          お問い合わせ
+        </p>
+        <h1 className="font-display mt-4 text-[72px] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink md:text-[184px]">
+          Contact
+        </h1>
+        <p className="mt-6 text-[16px] font-bold leading-[1.8] md:text-[20px]">
+          お仕事のご依頼・ご相談は、公式XアカウントのDMで受け付けています。
+        </p>
 
-      <div className="px-7 py-12 bg-bg">
-        <div className="max-w-[720px] mx-auto bg-surface border border-border rounded-2xl p-8 md:p-10">
-          <div className="flex items-center gap-4">
-            <span className="shrink-0 grid place-items-center w-14 h-14 rounded-full bg-cta text-white">
-              <XIcon size={24} />
-            </span>
-            <div>
-              <p className="text-[13px] text-text-muted">QuestMaker 公式 X</p>
-              <p className="text-xl font-bold text-text">{officialLinks.x.handle}</p>
+        <div className="mt-12 grid overflow-hidden rounded-[28px] bg-surface-muted md:mt-16 md:grid-cols-12 md:rounded-[40px]">
+          <div className="p-7 md:col-span-5 md:p-14">
+            <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-text-subtle">
+              Official X
+            </p>
+            <div className="mt-5 flex items-center gap-4">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-ink text-white">
+                <XIcon size={22} />
+              </span>
+              <div>
+                <p className="text-[13px] text-text-muted">QuestMaker 公式 X</p>
+                <p className="font-display text-[24px] font-bold md:text-[28px]">
+                  {officialLinks.x.handle}
+                </p>
+              </div>
             </div>
+
+            <a
+              href={officialLinks.x.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${solidPill} mt-10 w-full justify-between py-4 text-[15px]`}
+            >
+              <span className="inline-flex items-center gap-2.5">
+                <XIcon size={15} />X で DM を送る
+              </span>
+              <Arrow />
+            </a>
+            <p className="mt-4 text-[12px] leading-[1.8] text-text-muted">
+              X のプロフィールページが開きます。「メッセージ」ボタンから DM を送信してください。
+            </p>
           </div>
 
-          <p className="text-[15px] text-text-muted leading-[1.8] mt-6">
-            ご連絡の際は、以下を添えていただけるとスムーズです。
-          </p>
-          <ul className="mt-3 space-y-2">
-            {dmChecklist.map((item) => (
-              <li key={item} className="flex gap-2.5 text-[15px] text-text">
-                <span
-                  className="mt-[9px] w-1.5 h-1.5 rounded-full bg-accent-green shrink-0"
-                  aria-hidden="true"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href={officialLinks.x.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${buttonClass("primary", "lg")} w-full mt-8`}
-          >
-            <XIcon size={16} />
-            X で DM を送る
-          </a>
-          <p className="text-[13px] text-text-subtle text-center mt-3">
-            X のプロフィールページが開きます。「メッセージ」ボタンから DM を送信してください。
-          </p>
+          <div className="border-t border-line-strong bg-white/60 p-7 md:col-span-7 md:border-l md:border-t-0 md:p-14">
+            <p className="text-[15px] font-bold leading-[1.8]">
+              ご連絡の際は、以下を添えていただけるとスムーズです。
+            </p>
+            <ol className="mt-6">
+              {dmChecklist.map((item, i) => (
+                <li
+                  key={item}
+                  className="flex items-baseline gap-5 border-t border-line-strong py-5 last:border-b"
+                >
+                  <span className="font-display shrink-0 whitespace-nowrap text-[28px] font-extrabold leading-none text-ink md:text-[40px]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[15px] font-medium leading-[1.7] md:text-[17px]">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

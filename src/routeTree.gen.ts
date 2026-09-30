@@ -12,21 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as MembersRouteImport } from './routes/members'
-import { Route as PreviewRouteRouteImport } from './routes/preview/route'
 import { Route as WorksRouteImport } from './routes/works'
-import { Route as PreviewIndexRouteImport } from './routes/preview/index'
-import { Route as PreviewARouteRouteImport } from './routes/preview/a/route'
-import { Route as PreviewBRouteRouteImport } from './routes/preview/b/route'
-import { Route as PreviewCRouteRouteImport } from './routes/preview/c/route'
-import { Route as PreviewDRouteRouteImport } from './routes/preview/d/route'
-import { Route as PreviewAIndexRouteImport } from './routes/preview/a/index'
-import { Route as PreviewAContactRouteImport } from './routes/preview/a/contact'
-import { Route as PreviewBIndexRouteImport } from './routes/preview/b/index'
-import { Route as PreviewBContactRouteImport } from './routes/preview/b/contact'
-import { Route as PreviewCIndexRouteImport } from './routes/preview/c/index'
-import { Route as PreviewCContactRouteImport } from './routes/preview/c/contact'
-import { Route as PreviewDIndexRouteImport } from './routes/preview/d/index'
-import { Route as PreviewDContactRouteImport } from './routes/preview/d/contact'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -43,199 +29,41 @@ const MembersRoute = MembersRouteImport.update({
   path: '/members',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PreviewRouteRoute = PreviewRouteRouteImport.update({
-  id: '/preview',
-  path: '/preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const WorksRoute = WorksRouteImport.update({
   id: '/works',
   path: '/works',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PreviewIndexRoute = PreviewIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PreviewRouteRoute,
-} as any)
-const PreviewARouteRoute = PreviewARouteRouteImport.update({
-  id: '/a',
-  path: '/a',
-  getParentRoute: () => PreviewRouteRoute,
-} as any)
-const PreviewBRouteRoute = PreviewBRouteRouteImport.update({
-  id: '/b',
-  path: '/b',
-  getParentRoute: () => PreviewRouteRoute,
-} as any)
-const PreviewCRouteRoute = PreviewCRouteRouteImport.update({
-  id: '/c',
-  path: '/c',
-  getParentRoute: () => PreviewRouteRoute,
-} as any)
-const PreviewDRouteRoute = PreviewDRouteRouteImport.update({
-  id: '/d',
-  path: '/d',
-  getParentRoute: () => PreviewRouteRoute,
-} as any)
-const PreviewAIndexRoute = PreviewAIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PreviewARouteRoute,
-} as any)
-const PreviewAContactRoute = PreviewAContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PreviewARouteRoute,
-} as any)
-const PreviewBIndexRoute = PreviewBIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PreviewBRouteRoute,
-} as any)
-const PreviewBContactRoute = PreviewBContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PreviewBRouteRoute,
-} as any)
-const PreviewCIndexRoute = PreviewCIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PreviewCRouteRoute,
-} as any)
-const PreviewCContactRoute = PreviewCContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PreviewCRouteRoute,
-} as any)
-const PreviewDIndexRoute = PreviewDIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PreviewDRouteRoute,
-} as any)
-const PreviewDContactRoute = PreviewDContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PreviewDRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/preview': typeof PreviewRouteRouteWithChildren
   '/contact': typeof ContactRoute
   '/members': typeof MembersRoute
   '/works': typeof WorksRoute
-  '/preview/a': typeof PreviewARouteRouteWithChildren
-  '/preview/b': typeof PreviewBRouteRouteWithChildren
-  '/preview/c': typeof PreviewCRouteRouteWithChildren
-  '/preview/d': typeof PreviewDRouteRouteWithChildren
-  '/preview/': typeof PreviewIndexRoute
-  '/preview/a/contact': typeof PreviewAContactRoute
-  '/preview/b/contact': typeof PreviewBContactRoute
-  '/preview/c/contact': typeof PreviewCContactRoute
-  '/preview/d/contact': typeof PreviewDContactRoute
-  '/preview/a/': typeof PreviewAIndexRoute
-  '/preview/b/': typeof PreviewBIndexRoute
-  '/preview/c/': typeof PreviewCIndexRoute
-  '/preview/d/': typeof PreviewDIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/members': typeof MembersRoute
   '/works': typeof WorksRoute
-  '/preview': typeof PreviewIndexRoute
-  '/preview/a/contact': typeof PreviewAContactRoute
-  '/preview/b/contact': typeof PreviewBContactRoute
-  '/preview/c/contact': typeof PreviewCContactRoute
-  '/preview/d/contact': typeof PreviewDContactRoute
-  '/preview/a': typeof PreviewAIndexRoute
-  '/preview/b': typeof PreviewBIndexRoute
-  '/preview/c': typeof PreviewCIndexRoute
-  '/preview/d': typeof PreviewDIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/preview': typeof PreviewRouteRouteWithChildren
   '/contact': typeof ContactRoute
   '/members': typeof MembersRoute
   '/works': typeof WorksRoute
-  '/preview/a': typeof PreviewARouteRouteWithChildren
-  '/preview/b': typeof PreviewBRouteRouteWithChildren
-  '/preview/c': typeof PreviewCRouteRouteWithChildren
-  '/preview/d': typeof PreviewDRouteRouteWithChildren
-  '/preview/': typeof PreviewIndexRoute
-  '/preview/a/contact': typeof PreviewAContactRoute
-  '/preview/b/contact': typeof PreviewBContactRoute
-  '/preview/c/contact': typeof PreviewCContactRoute
-  '/preview/d/contact': typeof PreviewDContactRoute
-  '/preview/a/': typeof PreviewAIndexRoute
-  '/preview/b/': typeof PreviewBIndexRoute
-  '/preview/c/': typeof PreviewCIndexRoute
-  '/preview/d/': typeof PreviewDIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/preview'
-    | '/contact'
-    | '/members'
-    | '/works'
-    | '/preview/a'
-    | '/preview/b'
-    | '/preview/c'
-    | '/preview/d'
-    | '/preview/'
-    | '/preview/a/contact'
-    | '/preview/b/contact'
-    | '/preview/c/contact'
-    | '/preview/d/contact'
-    | '/preview/a/'
-    | '/preview/b/'
-    | '/preview/c/'
-    | '/preview/d/'
+  fullPaths: '/' | '/contact' | '/members' | '/works'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/contact'
-    | '/members'
-    | '/works'
-    | '/preview'
-    | '/preview/a/contact'
-    | '/preview/b/contact'
-    | '/preview/c/contact'
-    | '/preview/d/contact'
-    | '/preview/a'
-    | '/preview/b'
-    | '/preview/c'
-    | '/preview/d'
-  id:
-    | '__root__'
-    | '/'
-    | '/preview'
-    | '/contact'
-    | '/members'
-    | '/works'
-    | '/preview/a'
-    | '/preview/b'
-    | '/preview/c'
-    | '/preview/d'
-    | '/preview/'
-    | '/preview/a/contact'
-    | '/preview/b/contact'
-    | '/preview/c/contact'
-    | '/preview/d/contact'
-    | '/preview/a/'
-    | '/preview/b/'
-    | '/preview/c/'
-    | '/preview/d/'
+  to: '/' | '/contact' | '/members' | '/works'
+  id: '__root__' | '/' | '/contact' | '/members' | '/works'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PreviewRouteRoute: typeof PreviewRouteRouteWithChildren
   ContactRoute: typeof ContactRoute
   MembersRoute: typeof MembersRoute
   WorksRoute: typeof WorksRoute
@@ -264,13 +92,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MembersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/preview': {
-      id: '/preview'
-      path: '/preview'
-      fullPath: '/preview'
-      preLoaderRoute: typeof PreviewRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/works': {
       id: '/works'
       path: '/works'
@@ -278,179 +99,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/preview/': {
-      id: '/preview/'
-      path: '/'
-      fullPath: '/preview/'
-      preLoaderRoute: typeof PreviewIndexRouteImport
-      parentRoute: typeof PreviewRouteRoute
-    }
-    '/preview/a': {
-      id: '/preview/a'
-      path: '/a'
-      fullPath: '/preview/a'
-      preLoaderRoute: typeof PreviewARouteRouteImport
-      parentRoute: typeof PreviewRouteRoute
-    }
-    '/preview/b': {
-      id: '/preview/b'
-      path: '/b'
-      fullPath: '/preview/b'
-      preLoaderRoute: typeof PreviewBRouteRouteImport
-      parentRoute: typeof PreviewRouteRoute
-    }
-    '/preview/c': {
-      id: '/preview/c'
-      path: '/c'
-      fullPath: '/preview/c'
-      preLoaderRoute: typeof PreviewCRouteRouteImport
-      parentRoute: typeof PreviewRouteRoute
-    }
-    '/preview/d': {
-      id: '/preview/d'
-      path: '/d'
-      fullPath: '/preview/d'
-      preLoaderRoute: typeof PreviewDRouteRouteImport
-      parentRoute: typeof PreviewRouteRoute
-    }
-    '/preview/a/': {
-      id: '/preview/a/'
-      path: '/'
-      fullPath: '/preview/a/'
-      preLoaderRoute: typeof PreviewAIndexRouteImport
-      parentRoute: typeof PreviewARouteRoute
-    }
-    '/preview/a/contact': {
-      id: '/preview/a/contact'
-      path: '/contact'
-      fullPath: '/preview/a/contact'
-      preLoaderRoute: typeof PreviewAContactRouteImport
-      parentRoute: typeof PreviewARouteRoute
-    }
-    '/preview/b/': {
-      id: '/preview/b/'
-      path: '/'
-      fullPath: '/preview/b/'
-      preLoaderRoute: typeof PreviewBIndexRouteImport
-      parentRoute: typeof PreviewBRouteRoute
-    }
-    '/preview/b/contact': {
-      id: '/preview/b/contact'
-      path: '/contact'
-      fullPath: '/preview/b/contact'
-      preLoaderRoute: typeof PreviewBContactRouteImport
-      parentRoute: typeof PreviewBRouteRoute
-    }
-    '/preview/c/': {
-      id: '/preview/c/'
-      path: '/'
-      fullPath: '/preview/c/'
-      preLoaderRoute: typeof PreviewCIndexRouteImport
-      parentRoute: typeof PreviewCRouteRoute
-    }
-    '/preview/c/contact': {
-      id: '/preview/c/contact'
-      path: '/contact'
-      fullPath: '/preview/c/contact'
-      preLoaderRoute: typeof PreviewCContactRouteImport
-      parentRoute: typeof PreviewCRouteRoute
-    }
-    '/preview/d/': {
-      id: '/preview/d/'
-      path: '/'
-      fullPath: '/preview/d/'
-      preLoaderRoute: typeof PreviewDIndexRouteImport
-      parentRoute: typeof PreviewDRouteRoute
-    }
-    '/preview/d/contact': {
-      id: '/preview/d/contact'
-      path: '/contact'
-      fullPath: '/preview/d/contact'
-      preLoaderRoute: typeof PreviewDContactRouteImport
-      parentRoute: typeof PreviewDRouteRoute
-    }
   }
 }
 
-interface PreviewARouteRouteChildren {
-  PreviewAContactRoute: typeof PreviewAContactRoute
-  PreviewAIndexRoute: typeof PreviewAIndexRoute
-}
-
-const PreviewARouteRouteChildren: PreviewARouteRouteChildren = {
-  PreviewAContactRoute: PreviewAContactRoute,
-  PreviewAIndexRoute: PreviewAIndexRoute,
-}
-
-const PreviewARouteRouteWithChildren = PreviewARouteRoute._addFileChildren(
-  PreviewARouteRouteChildren,
-)
-
-interface PreviewBRouteRouteChildren {
-  PreviewBContactRoute: typeof PreviewBContactRoute
-  PreviewBIndexRoute: typeof PreviewBIndexRoute
-}
-
-const PreviewBRouteRouteChildren: PreviewBRouteRouteChildren = {
-  PreviewBContactRoute: PreviewBContactRoute,
-  PreviewBIndexRoute: PreviewBIndexRoute,
-}
-
-const PreviewBRouteRouteWithChildren = PreviewBRouteRoute._addFileChildren(
-  PreviewBRouteRouteChildren,
-)
-
-interface PreviewCRouteRouteChildren {
-  PreviewCContactRoute: typeof PreviewCContactRoute
-  PreviewCIndexRoute: typeof PreviewCIndexRoute
-}
-
-const PreviewCRouteRouteChildren: PreviewCRouteRouteChildren = {
-  PreviewCContactRoute: PreviewCContactRoute,
-  PreviewCIndexRoute: PreviewCIndexRoute,
-}
-
-const PreviewCRouteRouteWithChildren = PreviewCRouteRoute._addFileChildren(
-  PreviewCRouteRouteChildren,
-)
-
-interface PreviewDRouteRouteChildren {
-  PreviewDContactRoute: typeof PreviewDContactRoute
-  PreviewDIndexRoute: typeof PreviewDIndexRoute
-}
-
-const PreviewDRouteRouteChildren: PreviewDRouteRouteChildren = {
-  PreviewDContactRoute: PreviewDContactRoute,
-  PreviewDIndexRoute: PreviewDIndexRoute,
-}
-
-const PreviewDRouteRouteWithChildren = PreviewDRouteRoute._addFileChildren(
-  PreviewDRouteRouteChildren,
-)
-
-interface PreviewRouteRouteChildren {
-  PreviewARouteRoute: typeof PreviewARouteRouteWithChildren
-  PreviewBRouteRoute: typeof PreviewBRouteRouteWithChildren
-  PreviewCRouteRoute: typeof PreviewCRouteRouteWithChildren
-  PreviewDRouteRoute: typeof PreviewDRouteRouteWithChildren
-  PreviewIndexRoute: typeof PreviewIndexRoute
-}
-
-const PreviewRouteRouteChildren: PreviewRouteRouteChildren = {
-  PreviewARouteRoute: PreviewARouteRouteWithChildren,
-  PreviewBRouteRoute: PreviewBRouteRouteWithChildren,
-  PreviewCRouteRoute: PreviewCRouteRouteWithChildren,
-  PreviewDRouteRoute: PreviewDRouteRouteWithChildren,
-  PreviewIndexRoute: PreviewIndexRoute,
-}
-
-const PreviewRouteRouteWithChildren = PreviewRouteRoute._addFileChildren(
-  PreviewRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PreviewRouteRoute: PreviewRouteRouteWithChildren,
   ContactRoute: ContactRoute,
   MembersRoute: MembersRoute,
   WorksRoute: WorksRoute,
