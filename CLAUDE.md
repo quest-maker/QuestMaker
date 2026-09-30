@@ -77,6 +77,8 @@ UI プリミティブは `src/components/ui/` に集約（`arrow.tsx` 矢印ア�
 
 Vite が TanStack Start プラグイン + Cloudflare プラグインで SSG ビルドし、Wrangler が Cloudflare Workers にデプロイする。`vite.config.ts` のプラグイン順序に依存関係がある。
 
+本番デプロイは Cloudflare Workers Builds（ダッシュボードの Git 連携）が main への push を受けて行う。`pnpm run deploy` は手元から直接デプロイするための手段で、通常の反映には使わない。Workers Builds は GitHub 側に `Workers Builds: questmaker` のチェックを残すので、main のコミットにこのチェックが付いていなければデプロイが走っていない。
+
 ### パスエイリアス
 
 - `~/` → `src/` (tsconfig `paths`)
