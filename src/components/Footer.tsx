@@ -1,32 +1,90 @@
-import { SocialButton } from "./SocialButton";
+import { Link } from "@tanstack/react-router";
+import { BoothIcon, XIcon } from "~/components/ui/icons";
+import { navItems } from "~/components/nav-items";
+import { officialLinks } from "~/data/links";
+import { taglineLines } from "~/data/site";
 
 /**
- * サイト共通フッター。
- * 左: ロゴ + チーム説明
- * 右: X / BOOTH ボタン
- * 下部: コピーライト
+ * サイト共通フッター。最下部に淡いチーム名を大きく敷き、ページの終わりを示す。
  */
 export function Footer() {
   return (
-    <footer className="bg-footer-bg border-t border-border">
-      <div className="max-w-[1200px] mx-auto px-7 py-8">
-        <div className="flex justify-between items-start">
-          <div>
-            <img src="/images/QuestMaker_Logo_alpha.png" alt="QuestMaker" className="h-16" />
-          </div>
-          <div className="flex flex-col gap-2.5 items-end">
-            <SocialButton variant="x" label="@QuestMaker_" href="https://x.com/QuestMaker_" />
-            <SocialButton
-              variant="booth"
-              label="BOOTH ショップ"
-              href="https://questmaker.booth.pm/"
-            />
-          </div>
+    <footer className="overflow-hidden bg-white pt-16">
+      <div className="mx-auto grid max-w-[1320px] gap-10 px-5 md:grid-cols-12 md:px-10">
+        <div className="md:col-span-5">
+          <Link to="/" className="inline-flex items-center gap-2">
+            <img src="/images/QuestMaker_Logo_alpha.png" alt="" className="h-12 w-auto" />
+            <span className="font-display text-[20px] font-extrabold text-ink">QuestMaker</span>
+          </Link>
+          <p className="mt-4 text-[13px] leading-[1.9] text-text-muted">
+            {taglineLines[0]}
+            <br />
+            {taglineLines[1]}。
+          </p>
         </div>
-        <p className="text-center mt-5 text-[13px] text-text-subtle/50">
-          &copy; 2026 QuestMaker. All rights reserved.
+
+        <nav aria-label="フッターナビゲーション" className="md:col-span-3">
+          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-text-subtle">
+            Sitemap
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className="font-display text-[15px] font-semibold text-ink hover:text-accent-strong"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="md:col-span-4">
+          <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-text-subtle">
+            Follow
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            <li>
+              <a
+                href={officialLinks.x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 text-[15px] font-semibold text-ink hover:text-accent-strong"
+              >
+                <XIcon size={14} />
+                {officialLinks.x.handle}
+              </a>
+            </li>
+            <li>
+              <a
+                href={officialLinks.booth.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 text-[15px] font-semibold text-ink hover:text-accent-strong"
+              >
+                <BoothIcon size={16} />
+                BOOTH
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-14 flex max-w-[1320px] items-center justify-between border-t border-line px-5 py-5 md:px-10">
+        <p className="font-display text-[12px] text-text-subtle">© QuestMaker</p>
+        <p className="font-display text-[12px] uppercase tracking-[0.2em] text-text-subtle">
+          VRChat Creative Team
         </p>
       </div>
+
+      <p
+        aria-hidden="true"
+        className="font-display -mb-[0.22em] select-none whitespace-nowrap text-center text-[18vw] font-extrabold leading-none tracking-[-0.04em] text-surface-muted"
+      >
+        QuestMaker
+      </p>
     </footer>
   );
 }
