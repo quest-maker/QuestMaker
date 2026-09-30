@@ -33,7 +33,7 @@ pnpm fmt:check           # oxfmt --check (CI で使用)
 pnpm check               # lint + fmt:check (CI 相当の一括チェック)
 
 # デプロイ
-pnpm deploy              # build + wrangler deploy
+pnpm run deploy          # build + wrangler deploy（`pnpm deploy` は pnpm 組み込みの workspace 用コマンドが起動するため `run` が要る）
 ```
 
 ## CI Checks
