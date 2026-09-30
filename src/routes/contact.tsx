@@ -65,7 +65,7 @@ function ContactPage() {
               href={officialLinks.x.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${solidPill} mt-10 w-full justify-between py-4 text-[15px]`}
+              className={`${solidPill} mt-10 w-full justify-between`}
             >
               <span className="inline-flex items-center gap-2.5">
                 <XIcon size={15} />X で DM を送る
