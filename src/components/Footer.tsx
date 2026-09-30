@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { BoothIcon, XIcon } from "~/components/ui/icons";
 import { navItems } from "~/components/nav-items";
 import { officialLinks } from "~/data/links";
+import { taglineLines } from "~/data/site";
 
 /**
  * サイト共通フッター。最下部に淡いチーム名を大きく敷き、ページの終わりを示す。
@@ -16,9 +17,9 @@ export function Footer() {
             <span className="font-display text-[20px] font-extrabold text-ink">QuestMaker</span>
           </Link>
           <p className="mt-4 text-[13px] leading-[1.9] text-text-muted">
-            PCとQuestの垣根をなくし、
+            {taglineLines[0]}
             <br />
-            みんなで一緒に楽しめる世界をつくるVRChatクリエイターチーム。
+            {taglineLines[1]}。
           </p>
         </div>
 

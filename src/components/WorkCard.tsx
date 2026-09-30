@@ -11,12 +11,12 @@ export function WorkCard({ work, index }: { work: Work; index: number }) {
       <div className="relative overflow-hidden rounded-[20px] bg-surface-muted md:rounded-[28px]">
         <img
           src={work.image}
-          alt={work.title}
+          alt=""
           loading="lazy"
           className="aspect-[16/9] w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.04]"
         />
         {work.externalUrl && (
-          <span className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors group-hover:bg-accent group-hover:text-white">
+          <span className="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-sm transition-colors group-hover:bg-accent-strong group-hover:text-white">
             <ArrowUpRight size={18} aria-hidden="true" />
           </span>
         )}
@@ -64,7 +64,7 @@ export function WorkMeta({
       <span className="font-display rounded-full border border-ink px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em]">
         {categoryLabel[work.category]}
       </span>
-      <span className="font-display text-[13px] font-medium text-text-soft">{work.year}</span>
+      <span className="font-display text-[13px] font-medium text-text-subtle">{work.year}</span>
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { Fragment } from "react";
 import { MemberGrid } from "~/components/MemberGrid";
 import { WorkCard } from "~/components/WorkCard";
 import { Arrow } from "~/components/ui/arrow";
 import { outlinePill, solidPill } from "~/components/ui/pill";
 import { SectionTitle } from "~/components/ui/section-title";
+import { aboutBody, missionLines, worksLead } from "~/data/site";
 import { works } from "~/data/works";
 
 export const Route = createFileRoute("/")({
@@ -58,11 +60,12 @@ function Hero() {
         <div className="mt-10 grid items-end gap-10 md:mt-6 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5 md:pb-10">
             <p className="text-[22px] font-bold leading-[1.6] tracking-[0.02em] text-ink md:text-[28px]">
-              PCとQuestの垣根をなくし、
-              <br />
-              みんなで一緒に楽しめる
-              <br />
-              世界をつくりたい
+              {missionLines.map((line, i) => (
+                <Fragment key={line}>
+                  {i > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/works" className={solidPill}>
@@ -93,7 +96,7 @@ function Hero() {
                 </span>
                 <span className="text-[12px] text-text-muted">お仕事のご相談はこちら</span>
               </span>
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-white transition-colors group-hover:bg-accent">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-white transition-colors group-hover:bg-accent-strong">
                 <Arrow size={15} />
               </span>
             </Link>
@@ -111,11 +114,11 @@ function About() {
         <SectionTitle en="About" ja="私たちについて" />
         <div className="mt-12 grid gap-12 md:mt-20 md:grid-cols-12 md:gap-10">
           <p className="text-[24px] font-bold leading-[1.75] tracking-[0.01em] text-ink md:col-span-7 md:text-[38px] md:leading-[1.7]">
-            そんな思いを胸に集まった仲間たちで結成したVRChatのクリエイターチームです。プラットフォームの壁を越えて
+            {aboutBody.before}
             <span className="bg-[linear-gradient(transparent_62%,var(--color-accent-soft)_62%)]">
-              「みんなで仲良く」
+              {aboutBody.highlight}
             </span>
-            楽しめるコンテンツを制作しています！
+            {aboutBody.after}
           </p>
           <div className="md:col-span-5 md:pt-3">
             <img
@@ -135,7 +138,7 @@ function About() {
                 <p className="font-display text-[11px] font-semibold uppercase tracking-[0.2em] text-text-subtle">
                   Field
                 </p>
-                <p className="font-display mt-1 text-[17px] font-bold">World · Live · Event</p>
+                <p className="font-display mt-1 text-[17px] font-bold">World · Live</p>
               </div>
             </div>
           </div>
@@ -152,10 +155,7 @@ function Works() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionTitle en="Works" ja="実績" />
           <div className="max-w-[360px]">
-            <p className="text-[14px] leading-[1.9] text-text-muted">
-              ライブ演出からゲームワールドまで。PC でも Quest
-              でも、同じ空間を一緒に楽しめるように作っています。
-            </p>
+            <p className="text-[14px] leading-[1.9] text-text-muted">{worksLead}</p>
             <Link to="/works" className={`${outlinePill} mt-5`}>
               View all
               <Arrow />
@@ -194,24 +194,21 @@ function Members() {
 function ContactBlock() {
   return (
     <section className="bg-white px-3 pb-10 md:px-6">
-      <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-ink px-6 py-14 md:rounded-[48px] md:px-16 md:py-24">
-        <div className="relative grid items-end gap-10 md:grid-cols-12">
+      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[28px] bg-ink px-6 py-14 md:rounded-[48px] md:px-16 md:py-24">
+        <div className="grid items-end gap-10 md:grid-cols-12">
           <div className="md:col-span-8">
             <SectionTitle en="Contact" ja="お問い合わせ" tone="light" />
             <p className="mt-6 max-w-[520px] text-[15px] leading-[1.9] text-text-on-ink">
-              ワールド制作・ライブ演出・イベントのご依頼やご相談は、公式 X の DM
-              で受け付けています。
+              ワールド制作やライブ演出のご依頼・ご相談は、公式 X の DM で受け付けています。
             </p>
           </div>
-          <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
-            <Link
-              to="/contact"
-              className="font-display group inline-flex items-center justify-between gap-6 rounded-full bg-white px-7 py-4 text-[15px] font-semibold text-ink transition-colors hover:bg-accent hover:text-white"
-            >
-              DM で相談する
-              <Arrow />
-            </Link>
-          </div>
+          <Link
+            to="/contact"
+            className="font-display group inline-flex items-center justify-between gap-6 rounded-full bg-white px-7 py-4 text-[15px] font-semibold text-ink transition-colors hover:bg-accent-strong hover:text-white md:col-span-4 md:justify-self-end"
+          >
+            相談方法を見る
+            <Arrow />
+          </Link>
         </div>
       </div>
     </section>

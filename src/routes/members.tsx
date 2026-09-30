@@ -25,7 +25,7 @@ function MembersPage() {
         <p className="mt-6 max-w-[560px] text-[15px] leading-[1.9] text-text-muted">
           個性豊かなクリエイターたちが集まって、楽しいコンテンツを作っています。
         </p>
-        <MemberGrid className="mt-12 md:mt-20" showDescriptionOnMobile />
+        <MemberGrid className="mt-12 md:mt-20" showDescriptionOnMobile headingLevel="h2" />
       </div>
     </section>
   );

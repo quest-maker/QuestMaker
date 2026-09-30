@@ -3,6 +3,7 @@ import { WorkMeta } from "~/components/WorkCard";
 import { Arrow } from "~/components/ui/arrow";
 import { outlinePill } from "~/components/ui/pill";
 import { SectionTitle } from "~/components/ui/section-title";
+import { worksLead } from "~/data/site";
 import { works } from "~/data/works";
 
 export const Route = createFileRoute("/works")({
@@ -28,10 +29,7 @@ function WorksPage() {
     <section className="pb-24 pt-12 md:pb-36 md:pt-20">
       <div className="mx-auto max-w-[1320px] px-5 md:px-10">
         <SectionTitle as="h1" en="Works" ja="実績" />
-        <p className="mt-6 max-w-[560px] text-[15px] leading-[1.9] text-text-muted">
-          ライブ演出からゲームワールドまで。PC でも Quest
-          でも、同じ空間を一緒に楽しめるように作っています。
-        </p>
+        <p className="mt-6 max-w-[560px] text-[15px] leading-[1.9] text-text-muted">{worksLead}</p>
 
         <ol className="mt-14 space-y-20 md:mt-24 md:space-y-32">
           {works.map((work, i) => {
@@ -43,7 +41,7 @@ function WorksPage() {
                 >
                   <img
                     src={work.image}
-                    alt={work.title}
+                    alt=""
                     loading={i === 0 ? "eager" : "lazy"}
                     className="aspect-[16/9] w-full object-cover"
                   />

@@ -16,7 +16,9 @@ html {
 
 /**
  * QuestMaker デザイントークン。
- * 白地と墨（ink）の面を主役にし、緑のアクセントは hover・下線・ドットだけに使う。
+ * 白地と墨（ink）の面を主役にし、緑は面積の小さい要素だけに使う。
+ * accent は文字を載せない装飾（ドット・下線・句点）に、accent-strong は文字色と
+ * 白文字を載せる hover の塗りに使う（白地・白文字のどちらに対してもコントラスト 4.5:1 以上）。
  * 英字の見出しは Outfit（font-display）、和文と本文は Noto Sans JP（font-sans）で組む。
  */
 @theme {
@@ -26,13 +28,12 @@ html {
   --color-ink: #111111;
   --color-surface-muted: #f2f2f2;
   --color-text-muted: #555555;
-  --color-text-soft: #666666;
-  --color-text-subtle: #888888;
+  --color-text-subtle: #6b6b6b;
   --color-text-on-ink: #cfcfcf;
   --color-line: #ededed;
   --color-line-strong: #dcdcdc;
 
   --color-accent: #22c55e;
-  --color-accent-strong: #16a34a;
+  --color-accent-strong: #15803d;
   --color-accent-soft: #bbf7d0;
 }

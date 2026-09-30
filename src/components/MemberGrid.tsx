@@ -8,9 +8,12 @@ import { members } from "~/data/members";
 export function MemberGrid({
   className = "",
   showDescriptionOnMobile = false,
+  headingLevel: Heading = "h3",
 }: {
   className?: string;
   showDescriptionOnMobile?: boolean;
+  /** メンバー名の見出しレベル。ページの h1 直下に置くときは h2 を渡す */
+  headingLevel?: "h2" | "h3";
 }) {
   return (
     <ul
@@ -30,14 +33,16 @@ export function MemberGrid({
               <p className="font-display text-[11px] font-semibold uppercase tracking-[0.14em] text-accent-strong md:text-[12px]">
                 {m.role}
               </p>
-              <h3 className="mt-1 text-[18px] font-bold text-ink md:text-[24px]">{m.name}</h3>
+              <Heading className="mt-1 text-[18px] font-bold text-ink md:text-[24px]">
+                {m.name}
+              </Heading>
             </div>
             <a
               href={m.xUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${m.name} の X（${m.xHandle}）`}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink text-ink transition-colors hover:border-accent hover:bg-accent hover:text-white md:h-10 md:w-10"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink text-ink transition-colors hover:border-accent-strong hover:bg-accent-strong hover:text-white md:h-10 md:w-10"
             >
               <XIcon size={13} />
             </a>

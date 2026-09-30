@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import appCss from "~/styles/app.css?url";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
+import { tagline } from "~/data/site";
 
 /**
  * ルートレイアウト。
@@ -17,8 +18,7 @@ export const Route = createRootRoute({
       { title: "QuestMaker — VRChat Creative Team" },
       {
         name: "description",
-        content:
-          "PCとQuestの垣根をなくし、みんなで一緒に楽しめる世界をつくるVRChatクリエイターチーム「QuestMaker」の公式サイトです。",
+        content: `${tagline}「QuestMaker」の公式サイトです。`,
       },
       // OGP
       { property: "og:type", content: "website" },
@@ -29,8 +29,7 @@ export const Route = createRootRoute({
       },
       {
         property: "og:description",
-        content:
-          "PCとQuestの垣根をなくし、みんなで一緒に楽しめる世界をつくるVRChatクリエイターチーム",
+        content: tagline,
       },
       { property: "og:image", content: "/images/header.png" },
       // Twitter Card
@@ -41,8 +40,7 @@ export const Route = createRootRoute({
       },
       {
         name: "twitter:description",
-        content:
-          "PCとQuestの垣根をなくし、みんなで一緒に楽しめる世界をつくるVRChatクリエイターチーム",
+        content: tagline,
       },
       { name: "twitter:image", content: "/images/header.png" },
       // Theme

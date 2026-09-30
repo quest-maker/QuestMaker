@@ -55,20 +55,23 @@ push 前にこの 3 つをローカルで通すこと。
 - `index.tsx` — `/` トップページ
 - `works.tsx` — `/works` 実績一覧
 - `members.tsx` — `/members` メンバー一覧
+- `contact.tsx` — `/contact` お問い合わせ（公式 X の DM へ誘導）
 
 ### データフロー
 
 データベースや API は無い。コンテンツは `src/data/` の TypeScript 定数で管理:
-- `members.ts` — メンバー情報 (名前, 役職, SNS, 画像パス)
+- `members.ts` — メンバー情報 (名前, 役職, 紹介文, SNS, パネル画像パス)
 - `works.ts` — 作品情報 (タイトル, カテゴリ, 説明, 画像パス)
+- `links.ts` — 公式 X・BOOTH などチームの外部アカウント
+- `site.ts` — ミッション・一行紹介・リード文など、複数ページや meta で共有する文言
 
 新しいメンバーや作品を追加する場合はこれらのファイルを編集し、画像を `public/images/` に配置する。
 
 ### スタイリング
 
-Tailwind CSS v4 を使用。デザイントークン（カラー・フォント）は `src/styles/app.css` の `@theme` ブロックで定義。色名は `bg`, `surface`, `text`, `text-muted`, `accent-green`, `accent-blue`, `cta`, `booth-red` など。
+Tailwind CSS v4 を使用。デザイントークン（カラー・フォント）は `src/styles/app.css` の `@theme` ブロックで定義。色名は `ink`, `surface-muted`, `text-muted`, `text-subtle`, `text-on-ink`, `line`, `line-strong`, `accent`, `accent-strong`, `accent-soft`。緑の使い分け（`accent` は装飾、`accent-strong` は文字色と白文字を載せる塗り）は `@theme` のコメントを参照。フォントは和文・本文が `font-sans`（Noto Sans JP）、英字の見出しが `font-display`（Outfit）。
 
-UI プリミティブは `src/components/ui/` に集約。
+UI プリミティブは `src/components/ui/` に集約（`arrow.tsx` 矢印アイコン、`icons.tsx` X / BOOTH アイコン、`pill.ts` ピル型ボタンのクラス、`section-title.tsx` 英字＋和文のセクション見出し）。
 
 ### ビルド・デプロイパイプライン
 
