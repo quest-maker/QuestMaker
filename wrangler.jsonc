@@ -6,5 +6,7 @@
 	"main": "@tanstack/react-start/server-entry",
 	"observability": {
 		"enabled": true
-	}
+	},
+	// Workers Builds が main 以外のブランチで実行する `wrangler preview` は、このブロックがあることを要求する
+	"previews": {}
 }
