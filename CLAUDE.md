@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-QuestMaker は VRChat クリエイティブチームの静的ウェブサイト。チームの実績（ワールド作品）とメンバーを紹介する。
+QuestMaker は VRChat クリエイティブチームの紹介サイト。チームの実績（ワールド作品）とメンバーを紹介する。
 
-- **フレームワーク**: TanStack Start v1 (RC) — SSG + クライアントサイドルーティング
+- **フレームワーク**: TanStack Start v1 (RC) — Cloudflare Workers 上での SSR + クライアントサイドルーティング
 - **UI**: React 19 + Tailwind CSS v4 + Noto Sans JP
 - **デプロイ**: Cloudflare Workers (Wrangler)
 - **パッケージマネージャ**: pnpm
@@ -33,7 +33,7 @@ pnpm fmt:check           # oxfmt --check (CI で使用)
 pnpm check               # lint + fmt:check (CI 相当の一括チェック)
 
 # デプロイ
-pnpm deploy              # build + wrangler deploy
+pnpm run deploy          # build + wrangler deploy（`pnpm deploy` は pnpm 組み込みの workspace 用コマンドが起動するため `run` が要る）
 ```
 
 ## CI Checks
@@ -75,7 +75,9 @@ UI プリミティブは `src/components/ui/` に集約（`arrow.tsx` 矢印ア�
 
 ### ビルド・デプロイパイプライン
 
-Vite が TanStack Start プラグイン + Cloudflare プラグインで SSG ビルドし、Wrangler が Cloudflare Workers にデプロイする。`vite.config.ts` のプラグイン順序に依存関係がある。
+Vite が TanStack Start プラグイン + Cloudflare プラグインでクライアント用と SSR 用のバンドルをビルドし、Wrangler が Cloudflare Workers にデプロイする。`vite.config.ts` のプラグイン順序に依存関係がある。
+
+本番デプロイは Cloudflare Workers Builds（ダッシュボードの Git 連携）が main への push を受けて行う。`pnpm run deploy` は手元から直接デプロイするための手段で、通常の反映には使わない。Workers Builds は GitHub 側に `Workers Builds: questmaker` のチェックを残すので、main のコミットにこのチェックが付いていなければデプロイが走っていない。
 
 ### パスエイリアス
 
