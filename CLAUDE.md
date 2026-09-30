@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-QuestMaker は VRChat クリエイティブチームの静的ウェブサイト。チームの実績（ワールド作品）とメンバーを紹介する。
+QuestMaker は VRChat クリエイティブチームの紹介サイト。チームの実績（ワールド作品）とメンバーを紹介する。
 
 - **フレームワーク**: TanStack Start v1 (RC) — Cloudflare Workers 上での SSR + クライアントサイドルーティング
 - **UI**: React 19 + Tailwind CSS v4 + Noto Sans JP
