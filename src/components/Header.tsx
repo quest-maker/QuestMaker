@@ -32,6 +32,7 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
+                preload={item.to === "/" ? "intent" : "viewport"}
                 activeOptions={{ exact: item.to === "/" }}
                 activeProps={{ className: "underline" }}
                 className="font-display text-[13px] font-semibold uppercase tracking-[0.14em] text-ink underline-offset-[6px] decoration-accent decoration-2 hover:underline"
@@ -62,6 +63,7 @@ export function Header() {
           </div>
           <Link
             to="/contact"
+            preload="viewport"
             activeProps={{ className: "bg-accent-strong" }}
             inactiveProps={{ className: "bg-ink" }}
             className="font-display group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-accent-strong"
@@ -89,6 +91,7 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
+                preload={item.to === "/" ? "intent" : "viewport"}
                 activeOptions={{ exact: item.to === "/" }}
                 activeProps={{ className: "text-accent-strong" }}
                 inactiveProps={{ className: "text-ink" }}
