@@ -117,7 +117,7 @@ function About() {
           </p>
           <div className="md:col-span-5 md:pt-3">
             <img
-              src="/images/group-photo-1.webp"
+              src="/images/group-photo-1-1440.webp"
               alt="VRChat で撮影した QuestMaker メンバーの集合写真"
               loading="lazy"
               className="aspect-[4/3] w-full rounded-[24px] object-cover md:rounded-[32px]"
@@ -180,7 +180,7 @@ function Members() {
             <Arrow />
           </Link>
         </div>
-        <MemberGrid className="mt-12 md:mt-20" />
+        <MemberGrid className="mt-12 md:mt-20" loading="lazy" />
       </div>
     </section>
   );

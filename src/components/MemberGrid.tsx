@@ -9,11 +9,13 @@ export function MemberGrid({
   className = "",
   showDescriptionOnMobile = false,
   headingLevel: Heading = "h3",
+  loading = "eager",
 }: {
   className?: string;
   showDescriptionOnMobile?: boolean;
   /** メンバー名の見出しレベル。ページの h1 直下に置くときは h2 を渡す */
   headingLevel?: "h2" | "h3";
+  loading?: "eager" | "lazy";
 }) {
   return (
     <ul
@@ -25,6 +27,7 @@ export function MemberGrid({
             <img
               src={m.panelImage}
               alt={`${m.name} のアバター`}
+              loading={loading}
               className="aspect-square w-full object-contain p-3 motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.04] md:p-8"
             />
           </div>
