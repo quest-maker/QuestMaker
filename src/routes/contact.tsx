@@ -33,12 +33,9 @@ function ContactPage() {
   return (
     <section className="relative overflow-hidden pb-24 pt-12 md:pb-36 md:pt-20">
       <div className="mx-auto max-w-[1320px] px-5 md:px-10">
-        <p className="font-display flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.2em]">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-          お問い合わせ
-        </p>
-        <h1 className="font-display mt-4 text-[72px] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink md:text-[184px]">
+        <h1 className="font-display text-[72px] font-extrabold leading-[0.9] tracking-[-0.05em] text-ink md:text-[184px]">
           Contact
+          <span className="sr-only"> お問い合わせ</span>
         </h1>
         <p className="mt-6 text-[16px] font-bold leading-[1.8] md:text-[20px]">
           お仕事のご依頼・ご相談は、公式XアカウントのDMで受け付けています。

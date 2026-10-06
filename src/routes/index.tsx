@@ -46,15 +46,10 @@ function Hero() {
       </p>
 
       <div className="relative mx-auto max-w-[1320px] px-5 md:px-10">
-        <p className="font-display flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.2em] text-ink">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-          VRChat Creative Team
-        </p>
-        <h1 className="font-display relative z-10 mt-5 text-[56px] font-extrabold leading-[0.92] tracking-[-0.045em] text-ink md:text-[128px]">
+        <h1 className="font-display relative z-10 text-[56px] font-extrabold leading-[0.92] tracking-[-0.045em] text-ink md:text-[128px]">
           Worlds for
           <br />
           Everyone
-          <span className="text-accent">.</span>
         </h1>
 
         <div className="mt-10 grid items-end gap-10 md:mt-6 md:grid-cols-12 md:gap-8">

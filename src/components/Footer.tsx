@@ -74,9 +74,6 @@ export function Footer() {
 
       <div className="mx-auto mt-14 flex max-w-[1320px] items-center justify-between border-t border-line px-5 py-5 md:px-10">
         <p className="font-display text-[12px] text-text-subtle">© QuestMaker</p>
-        <p className="font-display text-[12px] uppercase tracking-[0.2em] text-text-subtle">
-          VRChat Creative Team
-        </p>
       </div>
 
       <p
