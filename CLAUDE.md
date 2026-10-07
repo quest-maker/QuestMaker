@@ -26,11 +26,12 @@ pnpm test                # 全テスト実行 (vitest run)
 pnpm test -- <pattern>   # パターンに一致するテストのみ実行
 
 # Lint & Format
-pnpm lint                # oxlint (type-aware)
+pnpm lint                # oxlint (type-aware + compiler diagnostics)
 pnpm lint:fix            # oxlint --fix
 pnpm fmt                 # oxfmt --write
 pnpm fmt:check           # oxfmt --check (CI で使用)
-pnpm check               # lint + fmt:check (CI 相当の一括チェック)
+pnpm lint:tooling        # lint/format/typecheck の回帰 fixture 検証
+pnpm check               # lint + fmt:check + lint:tooling (CI 相当の一括チェック)
 
 # デプロイ
 pnpm run deploy          # build + wrangler deploy（`pnpm deploy` は pnpm 組み込みの workspace 用コマンドが起動するため `run` が要る）
@@ -39,7 +40,7 @@ pnpm run deploy          # build + wrangler deploy（`pnpm deploy` は pnpm 組�
 ## CI Checks
 
 CI (`.github/workflows/ci.yml`) は push/PR で以下を実行する:
-1. `pnpm lint` + `pnpm fmt:check`
+1. `pnpm lint` + `pnpm fmt:check` + `pnpm lint:tooling`
 2. `pnpm build`
 3. `pnpm test`
 
@@ -90,7 +91,7 @@ Vite が TanStack Start プラグイン + Cloudflare プラグインでクライ
 
 ## Linting & Formatting
 
-- **Linter**: oxlint (TypeScript type-aware, React, jsx-a11y, import プラグイン有効)
+- **Linter**: oxlint (TypeScript type-aware + compiler diagnostics, React, jsx-a11y, import プラグイン有効)
 - **Formatter**: oxfmt
 - 設定: `.oxlintrc.json`, `.oxfmtrc.json`
 - `routeTree.gen.ts` は lint/format 対象外 (自動生成)
