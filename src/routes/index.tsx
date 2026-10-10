@@ -36,11 +36,11 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pb-20 pt-10 md:pb-32 md:pt-16">
-      {/* 背景の透かし英字。装飾なので読み上げない */}
+    <section className="relative overflow-hidden pb-6 pt-10 md:pb-12 md:pt-16">
+      {/* 背景の透かし英字。装飾なので読み上げない。モバイルはキービジュアルの上端にかからないよう下端に寄せる */}
       <p
         aria-hidden="true"
-        className="font-display pointer-events-none absolute left-1/2 top-[46%] -translate-x-1/2 select-none whitespace-nowrap text-[34vw] font-extrabold leading-none tracking-[-0.05em] text-surface-muted md:top-[52%] md:text-[23vw]"
+        className="font-display pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[34vw] font-extrabold leading-none tracking-[-0.05em] text-surface-muted md:bottom-auto md:top-[52%] md:text-[23vw]"
       >
         Quest
       </p>
@@ -103,8 +103,9 @@ function Hero() {
 }
 
 function About() {
+  // Hero と同じ白背景が続き境目が見えないため、上余白は Hero の下余白と合わせて 1 区切り分に収める
   return (
-    <section id="about" className="scroll-mt-20 bg-white py-20 md:py-36">
+    <section id="about" className="scroll-mt-20 bg-white pb-20 pt-16 md:pb-36 md:pt-28">
       <div className="mx-auto max-w-[1320px] px-5 md:px-10">
         <SectionTitle en="About" ja="私たちについて" />
         <div className="mt-12 grid gap-12 md:mt-20 md:grid-cols-12 md:gap-10">
