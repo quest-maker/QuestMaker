@@ -74,16 +74,16 @@ function Hero() {
             </div>
           </div>
 
-          <div className="relative md:col-span-7 md:-mt-16">
+          <div className="md:col-span-7 md:-mt-16">
             <img
               src="/images/header.png"
               alt="QuestMaker のキービジュアル。パステルの雲と風船に囲まれた QM ロゴ"
               className="aspect-[4/3] w-full rounded-[24px] object-cover md:aspect-[16/11] md:rounded-[40px]"
             />
-            {/* キービジュアルに重ねた Contact カード。ファーストビューから相談の入口を見せる */}
+            {/* ロゴを隠さないよう、Contact カードはキービジュアルに重ねず画像の下に置く */}
             <Link
               to="/contact"
-              className="group absolute -bottom-7 right-4 flex w-[210px] items-center justify-between gap-3 rounded-[20px] bg-white/85 p-4 pl-5 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-md md:-top-10 md:bottom-auto md:right-10 md:w-[260px] md:p-5 md:pl-6"
+              className="group ml-auto mt-4 flex w-[232px] items-center justify-between gap-3 rounded-[20px] bg-white p-4 pl-5 shadow-[0_10px_40px_rgba(0,0,0,0.08)] md:mt-6 md:w-[260px] md:p-5 md:pl-6"
             >
               <span>
                 <span className="font-display block text-[22px] font-bold text-ink md:text-[26px]">
