@@ -20,8 +20,7 @@ export const tagline = taglineLines.join("");
 
 /** About 本文。highlight の部分にマーカーを引く */
 export const aboutBody = {
-  before:
-    "そんな思いを胸に集まった仲間たちで結成したVRChatのクリエイターチームです。プラットフォームの壁を越えて",
+  before: "VRChatを軸に活動するクリエイターチームです。プラットフォームの壁を越えて",
   highlight: "「みんなで仲良く」",
   after: "楽しめるコンテンツを制作しています！",
 } as const;

@@ -36,11 +36,11 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pb-20 pt-10 md:pb-32 md:pt-16">
-      {/* 背景の透かし英字。装飾なので読み上げない */}
+    <section className="relative overflow-hidden pb-6 pt-10 md:pb-12 md:pt-16">
+      {/* 背景の透かし英字。装飾なので読み上げない。モバイルはキービジュアルの上端にかからないよう下端に寄せる */}
       <p
         aria-hidden="true"
-        className="font-display pointer-events-none absolute left-1/2 top-[46%] -translate-x-1/2 select-none whitespace-nowrap text-[34vw] font-extrabold leading-none tracking-[-0.05em] text-surface-muted md:top-[52%] md:text-[23vw]"
+        className="font-display pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[34vw] font-extrabold leading-none tracking-[-0.05em] text-surface-muted md:bottom-auto md:top-[52%] md:text-[23vw]"
       >
         Quest
       </p>
@@ -74,16 +74,16 @@ function Hero() {
             </div>
           </div>
 
-          <div className="relative md:col-span-7 md:-mt-16">
+          <div className="md:col-span-7 md:-mt-16">
             <img
               src="/images/header.png"
               alt="QuestMaker のキービジュアル。パステルの雲と風船に囲まれた QM ロゴ"
               className="aspect-[4/3] w-full rounded-[24px] object-cover md:aspect-[16/11] md:rounded-[40px]"
             />
-            {/* キービジュアルに重ねた Contact カード。ファーストビューから相談の入口を見せる */}
+            {/* ロゴを隠さないよう、Contact カードはキービジュアルに重ねず画像の下に置く */}
             <Link
               to="/contact"
-              className="group absolute -bottom-7 right-4 flex w-[210px] items-center justify-between gap-3 rounded-[20px] bg-white/85 p-4 pl-5 shadow-[0_10px_40px_rgba(0,0,0,0.08)] backdrop-blur-md md:-top-10 md:bottom-auto md:right-10 md:w-[260px] md:p-5 md:pl-6"
+              className="group ml-auto mt-4 flex w-[232px] items-center justify-between gap-3 rounded-[20px] bg-white p-4 pl-5 shadow-[0_10px_40px_rgba(0,0,0,0.08)] md:mt-6 md:w-[260px] md:p-5 md:pl-6"
             >
               <span>
                 <span className="font-display block text-[22px] font-bold text-ink md:text-[26px]">
@@ -103,8 +103,10 @@ function Hero() {
 }
 
 function About() {
+  // Hero と同じ白背景が続き境目が見えないため、Hero の下余白と合わせて
+  // 他セクションの上余白と同程度になるよう、About の上余白を小さくしている
   return (
-    <section id="about" className="scroll-mt-20 bg-white py-20 md:py-36">
+    <section id="about" className="scroll-mt-20 bg-white pb-20 pt-16 md:pb-36 md:pt-28">
       <div className="mx-auto max-w-[1320px] px-5 md:px-10">
         <SectionTitle en="About" ja="私たちについて" />
         <div className="mt-12 grid gap-12 md:mt-20 md:grid-cols-12 md:gap-10">
