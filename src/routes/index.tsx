@@ -103,8 +103,8 @@ function Hero() {
 }
 
 function About() {
-  // Hero と同じ白背景が続き境目が見えないため、Hero の下余白（pb-6 / md:pb-12）との合計が
-  // 他セクションの上余白（py-20 / md:py-36）と同程度になるよう、About の上余白を小さくしている
+  // Hero と同じ白背景が続き境目が見えないため、Hero の下余白と合わせて
+  // 他セクションの上余白と同程度になるよう、About の上余白を小さくしている
   return (
     <section id="about" className="scroll-mt-20 bg-white pb-20 pt-16 md:pb-36 md:pt-28">
       <div className="mx-auto max-w-[1320px] px-5 md:px-10">
